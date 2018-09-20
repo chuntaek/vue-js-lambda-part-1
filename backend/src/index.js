@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const routers = require('./routes');
 
 // define the express app
 const app = express();
@@ -19,6 +20,9 @@ app.use(cors());
 
 // log HTTP requests
 app.use(morgan('combined'));
+
+// express app definition and middleware config
+app.use('/micro-posts', routers);
 
 // start the server
 app.listen(8081, () => {

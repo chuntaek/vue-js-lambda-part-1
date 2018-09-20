@@ -14,7 +14,7 @@ export default {
     Auth0.configure({
       domain: 'peterjeong.auth0.com',
       clientID: 'W2b8utcFMtlbroNRAXjDt4XZaUeDn7nV',
-      audience: 'https://micro-blog-app',
+      audience: 'https://peterjeong.auth0.com/api/v2/',
       redirectUri: 'http://localhost:8080/callback',
       responseType: 'token id_token',
       scope: 'openid profile'

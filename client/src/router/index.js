@@ -28,7 +28,6 @@ export default new Router({
         if (Auth0.isAuthenticated()) {
           return next()
         }
-
         next('/')
       }
     }

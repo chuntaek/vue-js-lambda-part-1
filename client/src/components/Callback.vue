@@ -1,9 +1,3 @@
-<template>
-  <div>
-    <p>Loading your profile...</p>
-  </div>
-</template>
-
 <script>
 import * as Auth0 from 'auth0-web'
 
@@ -16,6 +10,12 @@ export default {
   }
 }
 </script>
+
+<template>
+<div>
+  <p>Loading your profile...</p>
+</div>
+</template>
 
 <style scoped>
 div > p {

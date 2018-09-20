@@ -58,7 +58,7 @@ export default {
     }
   },
   methods: {
-    signIn: Auth0.singIn,
+    signIn: Auth0.signIn,
     signOut () {
       Auth0.signOut({
         clientID: 'W2b8utcFMtlbroNRAXjDt4XZaUeDn7nV',

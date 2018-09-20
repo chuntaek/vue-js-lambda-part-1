@@ -1,6 +1,6 @@
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
-const auth0 = require('Auth0');
+const auth0 = require('auth0');
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
 
@@ -30,12 +30,12 @@ const checkJwt = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: `https://peterjeong.auth0.com/.well-known/jwks.json`
+    jwksUri: `https://<YOUR-AUTH0-DOMAIN>/.well-known/jwks.json`
   }),
 
   // Validate the audience and the issuer.
-  audience: 'https://peterjeong.auth0.com/userinfo',
-  issuer: `https://peterjeong.auth0.com`,
+  audience: 'https://peterjeong.auth0.com/api/v2/',
+  issuer: `https://peterjeong.auth0/`,
   algorithms: ['RS256']
 });
 

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import * as Auth0 from 'auth0-web'
 
 const url = 'http://localhost:8081/micro-posts/'
 
@@ -21,6 +22,8 @@ class MicroPostsService {
   static insertMicroPost (text) {
     return axios.post(url, {
       text
+    }, {
+      headers: { 'Authorization': `Bearer ${Auth0.getAccessToken()}` }
     })
   }
 }

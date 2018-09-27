@@ -30,12 +30,12 @@ const checkJwt = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: `https://<YOUR-AUTH0-DOMAIN>/.well-known/jwks.json`
+    jwksUri: 'https://${AUTH0_DOMAIN}/.well-known/jwks.json'
   }),
 
   // Validate the audience and the issuer.
-  audience: 'https://peterjeong.auth0.com/api/v2/',
-  issuer: `https://peterjeong.auth0/`,
+  audience: 'https://micro-blog-app',
+  issuer: 'https://${AUTH0_DOMAIN}/',
   algorithms: ['RS256']
 });
 
@@ -48,8 +48,8 @@ router.post('/', checkJwt, async (req, res) => {
     .replace('Bearer ', '');
 
   const authClient = new auth0.AuthenticationClient({
-    domain: 'peterjeong.auth0.com',
-    clientId: 'W2b8utcFMtlbroNRAXjDt4XZaUeDn7nV',
+    domain: AUTH0_DOMAIN,
+    clientId: AUTH0_CLIENT_ID,
   });
 
   authClient.getProfile(token, async (err, userInfo) => {
@@ -73,7 +73,7 @@ router.post('/', checkJwt, async (req, res) => {
 
 // loadMicroPostsCollection
 async function loadMicroPostsCollection() {
-  const client = await MongoClient.connect('mongodb://localhost:27017');
+  const client = await MongoClient.connect(MONGODB_URL);
   return client.db('micro-blog').collection('micro-posts');
 }
 

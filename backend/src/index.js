@@ -26,6 +26,7 @@ app.use(morgan('combined'));
 app.use('/micro-posts', routers);
 
 // start the server
-app.listen(8081, () => {
-  console.log('listening on port 8081');
-});
+// app.listen(8081, () => {
+//   console.log('listening on port 8081');
+// });
+module.exports = app;
